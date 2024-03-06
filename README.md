@@ -16,6 +16,31 @@ $ go tool pprof tmp/goroutine..20240306112343.156.log
 Main binary filename not available.
 Type: goroutine
 Entering interactive mode (type "help" for commands, "o" for options)
+(pprof) top
+Showing nodes accounting for 11, 100% of 11 total
+      flat  flat%   sum%        cum   cum%
+        11   100%   100%         11   100%  <unknown>
+(pprof) tree
+Showing nodes accounting for 11, 100% of 11 total
+----------------------------------------------------------+-------------
+      flat  flat%   sum%        cum   cum%   calls calls% + context
+----------------------------------------------------------+-------------
+        11   100%   100%         11   100%                | <unknown>
+----------------------------------------------------------+-------------
+(pprof) traces
+Type: goroutine
+-----------+-------------------------------------------------------
+         2   <unknown>
+             <unknown>
+             <unknown>
+             <unknown>
+-----------+-------------------------------------------------------
+         1   <unknown>
+             <unknown>
+             <unknown>
+             <unknown>
+             <unknown>
+...
 ```
 
 ![profile001](./profile001.png)
