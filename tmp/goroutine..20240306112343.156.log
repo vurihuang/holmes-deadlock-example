@@ -1,0 +1,68 @@
+goroutine profile: total 11
+2 @ 0x10003e612 0x10004e845 0x100571cde 0x10006e121
+#	0x100571cdd	mosn.io/pkg/log.(*Logger).handler+0x17d	/Users/vuri/go/pkg/mod/mosn.io/pkg@v1.6.0/log/logger.go:226
+
+1 @ 0x10003e612 0x1000082ad 0x100007f78 0x10058c814 0x10006e121
+#	0x10058c813	mosn.io/holmes.(*Holmes).gcHeapCheckLoop+0x33	/Users/vuri/go/pkg/mod/mosn.io/holmes@v1.1.0/holmes.go:611
+
+1 @ 0x10003e612 0x1000082ad 0x100007f78 0x10058edc6 0x10006e121
+#	0x10058edc5	mosn.io/holmes.(*Holmes).startReporter.func1+0x85	/Users/vuri/go/pkg/mod/mosn.io/holmes@v1.1.0/holmes.go:822
+
+1 @ 0x10003e612 0x10003790a 0x100068645 0x100124308 0x1001243b7 0x100125fcf 0x10029e8b3 0x1002b7e69 0x1003f5075 0x10006e121
+#	0x100068644	internal/poll.runtime_pollWait+0x44		/usr/local/opt/go/libexec/src/runtime/netpoll.go:302
+#	0x100124307	internal/poll.(*pollDesc).wait+0x87		/usr/local/opt/go/libexec/src/internal/poll/fd_poll_runtime.go:83
+#	0x1001243b6	internal/poll.(*pollDesc).waitRead+0x36		/usr/local/opt/go/libexec/src/internal/poll/fd_poll_runtime.go:88
+#	0x100125fce	internal/poll.(*FD).Read+0x44e			/usr/local/opt/go/libexec/src/internal/poll/fd_unix.go:167
+#	0x10029e8b2	net.(*netFD).Read+0x72				/usr/local/opt/go/libexec/src/net/fd_posix.go:55
+#	0x1002b7e68	net.(*conn).Read+0xa8				/usr/local/opt/go/libexec/src/net/net.go:183
+#	0x1003f5074	net/http.(*connReader).backgroundRead+0x94	/usr/local/opt/go/libexec/src/net/http/server.go:672
+
+1 @ 0x10003e612 0x10003790a 0x100068645 0x100124308 0x1001243b7 0x10012bb69 0x1002a1912 0x1002c51d5 0x1002c34a7 0x1004053e8 0x100404e05 0x100406936 0x10006e121
+#	0x100068644	internal/poll.runtime_pollWait+0x44	/usr/local/opt/go/libexec/src/runtime/netpoll.go:302
+#	0x100124307	internal/poll.(*pollDesc).wait+0x87	/usr/local/opt/go/libexec/src/internal/poll/fd_poll_runtime.go:83
+#	0x1001243b6	internal/poll.(*pollDesc).waitRead+0x36	/usr/local/opt/go/libexec/src/internal/poll/fd_poll_runtime.go:88
+#	0x10012bb68	internal/poll.(*FD).Accept+0x4a8	/usr/local/opt/go/libexec/src/internal/poll/fd_unix.go:614
+#	0x1002a1911	net.(*netFD).accept+0x71		/usr/local/opt/go/libexec/src/net/fd_unix.go:172
+#	0x1002c51d4	net.(*TCPListener).accept+0x54		/usr/local/opt/go/libexec/src/net/tcpsock_posix.go:139
+#	0x1002c34a6	net.(*TCPListener).Accept+0x66		/usr/local/opt/go/libexec/src/net/tcpsock.go:288
+#	0x1004053e7	net/http.(*Server).Serve+0x4c7		/usr/local/opt/go/libexec/src/net/http/server.go:3039
+#	0x100404e04	net/http.(*Server).ListenAndServe+0x164	/usr/local/opt/go/libexec/src/net/http/server.go:2968
+#	0x100406935	net/http.ListenAndServe+0xf5		/usr/local/opt/go/libexec/src/net/http/server.go:3222
+
+1 @ 0x10003e612 0x10004e845 0x1005734be 0x100573390 0x1005643f5 0x10006e121
+#	0x1005734bd	mosn.io/pkg/log.doRotateFunc+0xfd			/Users/vuri/go/pkg/mod/mosn.io/pkg@v1.6.0/log/logger.go:399
+#	0x10057338f	mosn.io/pkg/log.(*Logger).startRotate.func1+0x12f	/Users/vuri/go/pkg/mod/mosn.io/pkg@v1.6.0/log/logger.go:388
+#	0x1005643f4	mosn.io/pkg/utils.GoWithRecover.func1+0x74		/Users/vuri/go/pkg/mod/mosn.io/pkg@v1.6.0/utils/goroutine.go:58
+
+1 @ 0x10003e612 0x10006af1b 0x100594f7e 0x10003e1f8 0x10006e121
+#	0x10006af1a	time.Sleep+0x11a	/usr/local/opt/go/libexec/src/runtime/time.go:194
+#	0x100594f7d	main.main+0x25d		/Users/vuri/workspace/vuri/holmes-deadlock-example/main.go:28
+#	0x10003e1f7	runtime.main+0x1d7	/usr/local/opt/go/libexec/src/runtime/proc.go:250
+
+1 @ 0x10003e612 0x10006af1b 0x10059519e 0x1003ffd63 0x100402775 0x100404b34 0x1003febbc 0x10006e121
+#	0x10006af1a	time.Sleep+0x11a			/usr/local/opt/go/libexec/src/runtime/time.go:194
+#	0x10059519d	main.lockorder1+0xbd			/Users/vuri/workspace/vuri/holmes-deadlock-example/main.go:43
+#	0x1003ffd62	net/http.HandlerFunc.ServeHTTP+0x42	/usr/local/opt/go/libexec/src/net/http/server.go:2084
+#	0x100402774	net/http.(*ServeMux).ServeHTTP+0x134	/usr/local/opt/go/libexec/src/net/http/server.go:2462
+#	0x100404b33	net/http.serverHandler.ServeHTTP+0x473	/usr/local/opt/go/libexec/src/net/http/server.go:2916
+#	0x1003febbb	net/http.(*conn).serve+0x193b		/usr/local/opt/go/libexec/src/net/http/server.go:1966
+
+1 @ 0x100068245 0x10042a299 0x100429ef0 0x100425107 0x100588f97 0x100588956 0x100588750 0x10006e121
+#	0x100068244	runtime/pprof.runtime_goroutineProfileWithLabels+0x24	/usr/local/opt/go/libexec/src/runtime/mprof.go:753
+#	0x10042a298	runtime/pprof.writeRuntimeProfile+0x178			/usr/local/opt/go/libexec/src/runtime/pprof/pprof.go:725
+#	0x100429eef	runtime/pprof.writeGoroutine+0x8f			/usr/local/opt/go/libexec/src/runtime/pprof/pprof.go:685
+#	0x100425106	runtime/pprof.(*Profile).WriteTo+0xa6			/usr/local/opt/go/libexec/src/runtime/pprof/pprof.go:332
+#	0x100588f96	mosn.io/holmes.(*Holmes).goroutineProfile+0x536		/Users/vuri/go/pkg/mod/mosn.io/holmes@v1.1.0/holmes.go:376
+#	0x100588955	mosn.io/holmes.(*Holmes).goroutineCheckAndDump+0x135	/Users/vuri/go/pkg/mod/mosn.io/holmes@v1.1.0/holmes.go:355
+#	0x10058874f	mosn.io/holmes.(*Holmes).startDumpLoop+0xe6f		/Users/vuri/go/pkg/mod/mosn.io/holmes@v1.1.0/holmes.go:333
+
+1 @ 0x10006a89f 0x10008ab34 0x100085a7a 0x10012dfa2 0x100128c25 0x100137498 0x10013538d 0x100573a59 0x100571d5d 0x10006e121
+#	0x10006a89e	syscall.syscall+0x7e			/usr/local/opt/go/libexec/src/runtime/sys_darwin.go:23
+#	0x10008ab33	syscall.write+0xd3			/usr/local/opt/go/libexec/src/syscall/zsyscall_darwin_amd64.go:1653
+#	0x100085a79	syscall.Write+0x59			/usr/local/opt/go/libexec/src/syscall/syscall_unix.go:216
+#	0x10012dfa1	internal/poll.ignoringEINTRIO+0x81	/usr/local/opt/go/libexec/src/internal/poll/fd_unix.go:794
+#	0x100128c24	internal/poll.(*FD).Write+0x324		/usr/local/opt/go/libexec/src/internal/poll/fd_unix.go:383
+#	0x100137497	os.(*File).write+0x77			/usr/local/opt/go/libexec/src/os/file_posix.go:48
+#	0x10013538c	os.(*File).Write+0xcc			/usr/local/opt/go/libexec/src/os/file.go:176
+#	0x100573a58	mosn.io/pkg/log.(*Logger).Write+0x78	/Users/vuri/go/pkg/mod/mosn.io/pkg@v1.6.0/log/logger.go:437
+#	0x100571d5c	mosn.io/pkg/log.(*Logger).handler+0x1fc	/Users/vuri/go/pkg/mod/mosn.io/pkg@v1.6.0/log/logger.go:250
